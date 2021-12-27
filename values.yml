@@ -1,0 +1,20 @@
+expose:
+  type: ingress
+  tls:
+    enabled: false
+  ingress:
+    hosts:
+      core: harbor.do.tortle.tech
+      notary: notary.do.tortle.tech
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.tls.certresolver: le
+# If Harbor is deployed behind the proxy, set it as the URL of proxy
+externalURL: https://harbor.do.tortle.tech
+
+# The initial password of Harbor admin. Change it from portal after launching Harbor
+harborAdminPassword: "Barhor12345"
+
+# The secret key used for encryption. Must be a string of 16 chars.
+secretKey: "not-a-secure-key"
